@@ -19,14 +19,29 @@ A Minecraft Spigot/Paper plugin that allows foxes to follow players when fed swe
 
 ## Building the Plugin
 
-### Automatic Build (GitHub Actions)
+### Automatic Releases (GitHub Actions)
 
-This repository is configured with GitHub Actions to automatically build the plugin whenever changes are pushed. To get the latest build:
+This repository is configured with GitHub Actions to automatically create releases when tags are pushed:
 
-1. Go to the "Actions" tab in the GitHub repository
-2. Click on the latest successful workflow run
-3. Scroll down to the "Artifacts" section
-4. Download the "FloofyFollow" artifact which contains the compiled JAR file
+1. **Continuous Integration**: Every push to the repository is automatically built and tested
+2. **Official Releases**: When a tag is pushed (e.g., `v1.0.0`), a GitHub Release is automatically created
+
+To download the latest release:
+1. Go to the "Releases" section in the GitHub repository
+2. Find the latest release
+3. Download the JAR file attached to the release
+
+### Creating a New Release
+
+To create a new release:
+
+1. Make your changes and merge them to the main branch
+2. Create and push a tag:
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+3. GitHub Actions will automatically build the plugin and create a release
 
 ### Manual Build
 
