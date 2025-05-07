@@ -19,29 +19,73 @@ A Minecraft Spigot/Paper plugin that allows foxes to follow players when fed swe
 
 ## Building the Plugin
 
-### Automatic Releases (GitHub Actions)
+### Automatic Releases and Package Publishing
 
-This repository is configured with GitHub Actions to automatically create releases when tags are pushed:
+This repository is configured with GitHub Actions to automatically:
 
 1. **Continuous Integration**: Every push to the repository is automatically built and tested
 2. **Official Releases**: When a tag is pushed (e.g., `v1.0.0`), a GitHub Release is automatically created
+3. **Maven Package**: The plugin is published to GitHub Packages as a Maven package
 
-To download the latest release:
+### Using the Plugin
+
+#### Direct Download
+
+To download the latest release JAR:
 1. Go to the "Releases" section in the GitHub repository
 2. Find the latest release
 3. Download the JAR file attached to the release
+
+#### Maven Dependency
+
+To use the plugin as a dependency in your Maven project:
+
+1. Add GitHub Packages as a repository in your pom.xml:
+   ```xml
+   <repositories>
+     <repository>
+       <id>github</id>
+       <url>https://maven.pkg.github.com/crownforge/floofyfollow</url>
+     </repository>
+   </repositories>
+   ```
+
+2. Add the plugin as a dependency:
+   ```xml
+   <dependency>
+     <groupId>org.crownforge</groupId>
+     <artifactId>floofyfollow</artifactId>
+     <version>1.0.0</version>
+   </dependency>
+   ```
+
+3. Configure authentication for GitHub Packages in your `~/.m2/settings.xml`:
+   ```xml
+   <settings>
+     <servers>
+       <server>
+         <id>github</id>
+         <username>YOUR_GITHUB_USERNAME</username>
+         <password>YOUR_GITHUB_TOKEN</password>
+       </server>
+     </servers>
+   </settings>
+   ```
 
 ### Creating a New Release
 
 To create a new release:
 
 1. Make your changes and merge them to the main branch
-2. Create and push a tag:
+2. Create and push a tag with semantic versioning:
    ```bash
    git tag v1.0.0
    git push origin v1.0.0
    ```
-3. GitHub Actions will automatically build the plugin and create a release
+3. GitHub Actions will automatically:
+   - Build the plugin
+   - Create a GitHub Release with the JAR file
+   - Publish the package to GitHub Packages
 
 ### Manual Build
 
@@ -56,12 +100,12 @@ cd floofyfollow
 mvn clean package
 ```
 
-The compiled plugin will be in the `target` directory as `floofyfollow-1.0-SNAPSHOT.jar`.
+The compiled plugin will be in the `target` directory as `floofyfollow-1.0.0.jar`.
 
 ## Installation
 
 1. Stop your Minecraft server
-2. Copy the `floofyfollow-1.0-SNAPSHOT.jar` file to your server's `plugins` directory
+2. Copy the `floofyfollow-1.0.0.jar` file to your server's `plugins` directory
 3. Start your server
 4. The plugin will be automatically loaded
 
