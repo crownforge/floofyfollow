@@ -1,0 +1,6 @@
+name: FloofyFollow
+version: '${project.version}'
+main: org.crownforge.floofyfollow.FloofyFollow
+api-version: '1.19'
+description: A plugin that allows foxes to follow players when fed sweet berries
+author: CrownForge
